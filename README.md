@@ -171,8 +171,8 @@ VALUES
     "Audience": "Admin" // The token audience.
   },
   "EmailSettings": {
-    "From": "your@gmail.com",
-    "Password": "YourMailPassword",
+    "From": "your@gmail.com", // Specify an email through which emails will be sent.
+    "Password": "YourMailPassword", // Specify the email password.
     "Host": "smtp.gmail.com", // You can keep this if you use gmail.
     "Gmail": "587" // You can keep this if you use gmail.
   }
