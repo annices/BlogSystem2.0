@@ -1,0 +1,86 @@
+﻿@model BsEntry
+
+@{
+    ViewBag.Title = "Create entry";
+    ViewBag.Entry = "Entry";
+}
+
+<div class="container">
+
+    <div class="header">
+        <h4>
+            <img src="~/imgs/bootstrap-icons/pencil-fill.svg" alt="" width="22" height="22" />
+            <b>Create entry</b>
+        </h4>
+        Create a new blog post by filling in the form below.
+    </div>
+
+    <p class="text-success" id="feedback">
+        @ViewBag.Success
+    </p>
+
+    <fieldset>
+        <legend>Create a new blog entry</legend>
+
+        <form method="post" asp-action="Create" id="entryForm">
+            <div class="form-group row">
+                <label class="control-label col-sm-2" asp-for="IsPublished">Status:</label>
+                <div class="col-sm-7">
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="customRadioInline1" name="publishStatus" value="true" class="custom-control-input" checked />
+                        <label class="custom-control-label font-weight-light" for="customRadioInline1">Publish</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="customRadioInline2" name="publishStatus" value="false" class="custom-control-input" />
+                        <label class="custom-control-label font-weight-light" for="customRadioInline2">Draft</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-2" asp-for="Title">Title: <span class="text-danger">*</span></label>
+                <div class="col-sm-7">
+                    <input asp-for="Title" type="text" class="form-control form" required />
+                    <span asp-validation-for="@Model.Title" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-2" for="category">Categories: <span class="text-danger">*</span></label>
+                <div class="col-sm-7">
+                    <div class="category-feedback"></div>
+                    <div class="dropdown-checklist category-validation" id="categories" tabindex="100">
+                        <span class="anchor">- Select categories -</span>
+                        <ul class="items">
+                            @if (ViewBag.Categories != null)
+                            {
+                                @foreach (var item in ViewBag.Categories)
+                                {
+                                    <li>
+                                        <input type="checkbox" value="@item.Id" name="selectedCategories" />
+                                        @item.Category
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                    <span class="text-danger">@ViewBag.Error</span>
+                    <img src="~/imgs/bootstrap-icons/plus-square-fill.svg" width="15" height="15" />
+                    <a asp-controller="Category" asp-action="Create">Add new category</a>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-2" asp-for="Entry">Entry: <span class="text-danger">*</span></label>
+                <div class="col-sm-10">
+                    <div class="entry-feedback"></div>
+                    <div class="entry-validation">
+                        <textarea asp-for="Entry" class="form-control form" id="tinymce"></textarea>
+                        <span asp-validation-for="@Model.Entry" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="offset-sm-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </fieldset>
+
+</div>

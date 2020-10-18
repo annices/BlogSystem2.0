@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Category edit list";
+}
+
+<div class="container">
+    <div class="header">
+        <h4>
+            <img src="~/imgs/bootstrap-icons/card-list.svg" alt="" width="22" height="22" />
+            <b>Edit categories</b>
+        </h4>
+        Edit, delete and/or search for categories in the table below.
+    </div>
+
+    <p class="text-success" id="feedback">@ViewBag.Success</p>
+    <p class="text-danger">@ViewBag.Error</p>
+
+    <form method="post" action="Category/Delete">
+        <img src="../imgs/bootstrap-icons/trash-fill.svg" width="15" height="15" />
+        <button class="btn-as-link" style="margin-bottom: 10px" onclick="return confirm('Are you sure you want to delete selected categories?')">
+            Delete selected
+        </button>
+        &nbsp;&#124;&nbsp;
+        <img src="../imgs/bootstrap-icons/plus-square-fill.svg" width="15" height="15" />
+        <a href="Category/Create">Add new category</a>
+
+        @Html.AjaxGrid(Url.Action("Index"))
+    </form>
+</div>

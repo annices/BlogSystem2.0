@@ -1,0 +1,17 @@
+﻿<script src="~/lib/tinymce/js/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+    tinymce.init({
+        selector: '#tinymce',
+        height: 500,
+        themes: 'modern',
+        plugins: [
+            'advlist autolink lists link image imagetools charmap print preview hr anchor pagebreak',
+            'searchreplace wordcount visualblocks visualchars fullscreen',
+            'insertdatetime media nonbreaking save table contextmenu directionality',
+            'paste textcolor colorpicker textpattern code codesample'
+        ],
+        toolbar: [
+            'undo redo styleselect bold italic alignleft aligncenter alignright alignjustify | outdent indent | image media | codesample'
+        ]
+    });
+</script>

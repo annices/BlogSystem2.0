@@ -1,0 +1,88 @@
+﻿@model ReflectionIT.Mvc.Paging.PagingList<BsEntry>
+@using ReflectionIT.Mvc.Paging
+@addTagHelper *, ReflectionIT.Mvc.Paging
+
+@{
+    ViewBag.Title = "Start page";
+    ViewBag.Entry = "Entry"; @*Used to call CSS to keep styling of code inserts in entries saved via TinyMCE textarea.*@
+}
+
+<div class="container">
+    <div class="header">
+        <h4>
+            <img src="~/imgs/bootstrap-icons/card-list.svg" alt="" width="22" height="22" />
+            <b>Latest entries</b>
+        </h4>
+        <p>
+            You are now on the public start page of this application where the latest published entries are displayed.
+        </p>
+        @if (TempData["Admin"] != null)
+        {
+            <a asp-controller="Entry" asp-action="Create" class="btn btn-primary">Create a new blog post</a>
+        }
+    </div>
+
+    @foreach (var entry in Model)
+    {
+        <fieldset class="entry">
+            <legend>@entry.Title</legend>
+
+            <p>
+                <img src="~/imgs/bootstrap-icons/person-fill.svg" alt="" width="15" height="15" />
+                <b>@entry.User.Username</b>&nbsp;&nbsp;
+
+                <img src="~/imgs/bootstrap-icons/calendar.svg" alt="" width="15" height="15" />
+                <b>@entry.Date.ToString("yyyy-MM-dd HH:mm")</b>&nbsp;&nbsp;
+
+                <img src="~/imgs/bootstrap-icons/tags-fill.svg" alt="" width="15" height="15" />
+                <b>
+                    @{ List<string> list = new List<string>(); }
+                    @foreach (var category in ViewBag.Categories)
+                    {
+                        @if (category.EntryId == entry.Id)
+                        {
+                            list.Add(category.CategoryName);
+                        }
+                    }
+                    @{ @string.Join(", ", list); }
+                </b>
+
+                @if (TempData["Admin"] != null)
+                {
+                    <span style="float: right">
+                        <img src="~/imgs/bootstrap-icons/pencil-square.svg" width="15" height="15" />
+                        <a href="Entry/Edit/@entry.Id"><b>Edit</b></a>
+                    </span>
+                }
+            </p>
+
+            @if (entry.Entry.Length <= 2000)
+            {
+                @Html.Raw(entry.Entry)
+            }
+            else
+            {
+                @(Html.Raw(entry.Entry.Substring(0, 2000) + "..."))
+
+                <text>
+                    <a asp-controller="Home" asp-action="EntryComments" asp-route-id="@entry.Id">Read more &raquo;</a>
+                </text>
+            }
+
+            <p style="margin-top: 10px">
+                <img src="~/imgs/bootstrap-icons/chat-text-fill.svg" alt="" width="15" height="15" />
+                <a href="Home/EntryComments/@entry.Id#comment">
+                    Comments (@entry.BsComments.Count())
+                </a>
+            </p>
+
+        </fieldset>
+    }
+
+    @*Print message if no entries.*@
+    <p><em>@ViewBag.NoEntries</em></p>
+
+</div>
+<nav aria-label="Entry paging" class="pagination" style="margin: 0 auto 0 auto">
+    <vc:pager paging-list="@Model" />
+</nav>

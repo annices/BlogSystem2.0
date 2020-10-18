@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<!--
+Blog System 2.0 was created by Annice Strömberg, 2020 (https://annice.se).
+-->
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Blog System 2.0</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/mvc-grid/css/mvc-grid.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    @if (ViewBag.Entry != null)
+    {
+        <link rel="stylesheet" href="~/css/dropdown-checklist.css" />
+        <link rel="stylesheet" href="~/lib/prism/prism.css" />
+        <partial name="~/Views/Shared/_TinyMCE.cshtml" />
+    }
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">Blog System 2.0</a>&nbsp;&nbsp;
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar10">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse" id="navbar10">
+                <ul class="navbar-nav nav-fill w-100">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="Index">Start</a> <span class="sr-only">(current)</span>
+                    </li>
+                    @if (TempData["Admin"] != null)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="User" asp-action="Edit">Admin settings</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Entries
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" asp-controller="Entry" asp-action="Create">Create entry</a>
+                                <a class="dropdown-item" asp-controller="Entry" asp-action="Index">Edit entries</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Comment" asp-action="Index">Edit comments</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Categories
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" asp-controller="Category" asp-action="Create">Create category</a>
+                                <a class="dropdown-item" asp-controller="Category" asp-action="Index">Edit categories</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-controller="User" asp-action="Logout" class="nav-link">Logout</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Login">Login</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+        @{ TempData.Keep("Admin"); }
+    </nav>
+    <div class="container" style="padding-bottom: 100px">
+        <div class="row">
+            @RenderBody()
+            <script src="~/lib/mvc-grid/js/mvc-grid.js"></script>
+            <script>
+                document.querySelectorAll(".mvc-grid").forEach(element => new MvcGrid(element));
+            </script>
+        </div>
+    </div>
+    <footer class="card-footer bg-dark text-light fixed-bottom">
+        <div class="container">
+            <div class="row">
+                Blog System 2.0 - An ASP.NET Core application from&nbsp;<a href="https://annice.se" target="_blank"> Annice.se</a>.
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js"></script>
+    @if (ViewBag.Entry != null)
+    {
+        <script src="~/lib/prism/prism.js"></script>
+        <script src="~/js/comment-pagination.js"></script>
+    }
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

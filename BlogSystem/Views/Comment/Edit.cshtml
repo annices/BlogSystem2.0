@@ -1,0 +1,74 @@
+﻿@model BsComment
+
+@{
+    ViewBag.Title = "Edit comment";
+}
+
+<div class="container">
+
+    <div class="header">
+        <h4>
+            <img src="~/imgs/bootstrap-icons/pencil-square.svg" alt="" width="22" height="22" />
+            <b>Edit comment</b>
+        </h4>
+        Edit the comment in the form below.
+    </div>
+
+    <p class="text-success" id="feedback">
+        @ViewBag.Success
+    </p>
+
+    <fieldset>
+        <legend>Edit comment for entry ID @Model.EntryId</legend>
+
+        <form method="post" asp-action="Edit">
+            <input asp-for="Id" type="hidden" />
+            <input asp-for="EntryId" type="hidden" />
+            <input asp-for="Date" type="hidden" />
+
+            <div class="form-group row">
+                <label class="control-label col-sm-2" asp-for="Name">Author: <span class="text-danger">*</span></label>
+                <div class="col-sm-7">
+                    <input asp-for="Name" type="text" class="form-control" required />
+                    <span asp-validation-for="@Model.Name" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-2" asp-for="Email">Email:</label>
+                <div class="col-sm-7">
+                    <input asp-for="Email" type="email" class="form-control" />
+                    <span asp-validation-for="@Model.Email" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-2" asp-for="Website">Website:</label>
+                <div class="col-sm-7">
+                    <input asp-for="Website" type="url" placeholder="https://" onclick="this.placeholder=''" onblur="this.placeholder='https://'" class="form-control" />
+                    <span asp-validation-for="@Model.Website" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-2" asp-for="Comment">Comment: <span class="text-danger">*</span></label>
+                <div class="col-sm-7">
+                    <textarea asp-for="Comment" class="form-control form" required>@Model.Comment</textarea>
+                    <span asp-validation-for="@Model.Comment" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-2" asp-for="Comment">Admin reply:</label>
+                <div class="col-sm-7">
+                    <textarea asp-for="Reply" class="form-control form">@Model.Reply</textarea>
+                    <span asp-validation-for="@Model.Reply" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="offset-sm-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </fieldset>
+
+    <p>
+        <img src="~/imgs/bootstrap-icons/caret-left-fill.svg" alt="" width="12" height="12" />
+        <a href="javascript:history.back(-1)"><b>Go back</b></a>
+    </p>
+</div>

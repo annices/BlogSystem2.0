@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Entry edit list";
+}
+
+<div class="container">
+    <div class="header">
+        <h4>
+            <img src="~/imgs/bootstrap-icons/card-list.svg" alt="" width="22" height="22" />
+            <b>Edit entries</b>
+        </h4>
+        Edit, delete and/or search for blog posts in the table below.
+    </div>
+
+    <p class="text-success" id="feedback">
+        @ViewBag.Success
+    </p>
+    <form method="post" action="Entry/Delete">
+        <img src="../imgs/bootstrap-icons/trash-fill.svg" width="15" height="15" />
+        <button class="btn-as-link" style="margin-bottom: 10px" onclick="return confirm('Are you sure you want to delete selected entries?')">
+            Delete selected
+        </button>
+        &nbsp;&#124;&nbsp;
+        <img src="../imgs/bootstrap-icons/plus-square-fill.svg" width="15" height="15" />
+        <a href="Entry/Create">Add new entry</a>
+
+        @Html.AjaxGrid(Url.Action("Index"))
+    </form>
+</div>

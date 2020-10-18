@@ -1,0 +1,36 @@
+﻿@model BsCategory
+
+@{
+    ViewBag.Title = "Create category";
+}
+
+<div class="container">
+
+    <div class="header">
+        <h4>
+            <img src="~/imgs/bootstrap-icons/pencil-fill.svg" alt="" width="22" height="22" />
+            <b>Create category</b>
+        </h4>
+        Create a category in the form below.
+    </div>
+
+    <p class="text-danger">@ViewBag.Error</p>
+
+    <fieldset>
+        <legend>Create a new category</legend>
+
+        <form method="post" asp-controller="Category" asp-action="Create">
+            <div class="form-group row">
+                <label class="control-label col-sm-2" asp-for="Category">Name: <span class="text-danger">*</span></label>
+                <div class="col-sm-7">
+                    <input asp-for="Category" type="text" class="form-control form" required />
+                    <span asp-validation-for="@Model.Category" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="offset-sm-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </fieldset>
+
+</div>

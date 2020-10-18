@@ -1,0 +1,50 @@
+﻿@model IQueryable<BsEntry>
+@* This view shall only include grid declaration (not raw HTML)! *@
+
+@(Html
+        .Grid(Model)
+        .Build(columns =>
+        {
+        columns.Add(model => $"<input type=\"checkbox\" name=\"selectedEntries\" value=\"{model.Id}\" />").Encoded(false)
+        .Titled(Html.CheckBox("selectAll", false, new
+        {
+            onclick="multiSelect(this.getAttribute('id'), 'input[name=\"selectedEntries\"]')"
+        })).Encoded(false);
+
+        columns.Add(model => model.Id).Titled("ID");
+
+        columns.Add(model => model.User.Username).Titled("Author").Filterable(false).Sortable(false);
+
+        columns.Add(model => model.Date).Titled("Date").Formatted("{0:yyyy-MM-dd HH:mm}");
+
+        columns.Add(model => model.Title).Titled("Title");
+
+        columns.Add(model => $"<a href=\"Home/EntryComments/{model.Id}#comment\" title=\"See comments.\">{model.BsComments.Count()}</a>")
+            .Encoded(false).Titled("Comments");
+
+        columns.Add(model => model.IsPublished).RenderedAs(model => model.IsPublished == true ? "Published" : "Draft").Titled("Status").UsingFilterOptions
+        (new[]
+            {
+                    new SelectListItem { Text = "- Select status -", Disabled = true },
+                    new SelectListItem { Value = "true", Text = "Published" },
+                    new SelectListItem { Value = "false", Text = "Draft" }
+            }
+        );
+
+        columns.Add(model => $"<a href=\"Entry/Edit/{model.Id}\" title=\"Edit entry.\">" +
+        $"<img src=\"../imgs/bootstrap-icons/pencil-square.svg\" width=\"15\" height=\"15\" /></a>&nbsp;&nbsp;&nbsp;" +
+        $"<form method=\"post\" style=\"display: inline-block\" action=\"Entry/Delete/{model.Id}\">" +
+        $"<button type=\"submit\" class=\"btn-as-link\" title=\"Delete entry.\" onclick=\"return confirm('Are you sure you want to delete this entry?')\">" +
+        $"<img src=\"../imgs/bootstrap-icons/trash-fill.svg\" width=\"15\" height=\"15\" /></button></form>").Encoded(false);
+    })
+        .Attributed(new { id = "GridTable" })
+        .Sortable()
+        .Filterable()
+        .Css("css-classes")
+        .AppendCss("table")
+        .Empty("No entries found.")
+        .Pageable(pager => 
+        { 
+            pager.RowsPerPage = 50; 
+        })
+)

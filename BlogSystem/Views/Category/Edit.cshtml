@@ -1,0 +1,43 @@
+﻿@model BsCategory
+
+@{
+    ViewBag.Title = "Edit category";
+}
+
+<div class="container">
+
+    <div class="header">
+        <h4>
+            <img src="~/imgs/bootstrap-icons/pencil-square.svg" alt="" width="22" height="22" />
+            <b>Edit category</b>
+        </h4>
+        Edit the category in the form below.
+    </div>
+
+    <p class="text-success" id="feedback">@ViewBag.Success</p>
+    <p class="text-danger">@ViewBag.Error</p>
+
+    <fieldset>
+        <legend>Edit category name</legend>
+
+        <form method="post" asp-action="Edit">
+            <input asp-for="Id" type="hidden" />
+
+            <div class="form-group row">
+                <label class="control-label col-sm-2" asp-for="Category">Name: <span class="text-danger">*</span></label>
+                <div class="col-sm-7">
+                    <input asp-for="Category" type="text" class="form-control" required />
+                    <span asp-validation-for="@Model.Category" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="offset-sm-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </fieldset>
+
+    <p>
+        <img src="~/imgs/bootstrap-icons/caret-left-fill.svg" alt="" width="12" height="12" />
+        <a asp-controller="Category" asp-action="Index"><b>Go back</b></a>
+    </p>
+</div>

@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Login";
+    ViewBag.Entry = "Entry";
+}
+
+<div class="container">
+
+    <div class="header">
+        <h4>
+            <img src="~/imgs/bootstrap-icons/box-arrow-in-right.svg" alt="" width="22" height="22" />
+            <b>Login</b>
+        </h4>
+        Login to the admin panel by entering your user details below.
+    </div>
+
+    <p class="text-danger">
+        @ViewBag.Error
+    </p>
+
+    <fieldset>
+        <legend>Login user</legend>
+
+        <form method="post" asp-action="Login">
+            <div class="form-group row">
+                <label class="control-label col-sm-2" for="email">Email:</label>
+                <div class="col-sm-7">
+                    <input type="email" name="email" class="form-control form" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-2" for="password">Password:</label>
+                <div class="col-sm-7">
+                    <input type="password" name="password" class="form-control form" />
+                    <a asp-controller="Home" asp-action="RequestPassword">Have you forgotten your password?</a>
+                </div>
+            </div>
+            <div class="offset-sm-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+        </form>
+    </fieldset>
+
+</div>

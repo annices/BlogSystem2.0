@@ -1,0 +1,150 @@
+﻿@model BsEntry
+
+@{
+    ViewBag.Title = "Entry details";
+    ViewBag.Entry = "Entry"; @*Used to call CSS to keep styling of code inserts in entries saved via TinyMCE textarea.*@
+}
+
+<div class="container">
+    <div class="header">
+        <h4>
+            <img src="~/imgs/bootstrap-icons/journal-text.svg" alt="" width="22" height="22" />
+            <b>Entry details</b>
+        </h4>
+    </div>
+
+    <fieldset>
+        <legend>@Model.Title</legend>
+
+        <p>
+            <img src="~/imgs/bootstrap-icons/person-fill.svg" alt="" width="12" height="12" />
+            <b>@Model.User.Username</b>&nbsp;&nbsp;
+
+            <img src="~/imgs/bootstrap-icons/calendar.svg" alt="" width="12" height="12" />
+            <b>@Model.Date.ToString("yyyy-MM-dd HH:mm")</b>&nbsp;&nbsp;
+
+            <img src="~/imgs/bootstrap-icons/tags-fill.svg" alt="" width="12" height="12" />
+            <b>
+                @(string.Join(", ", ViewBag.EntryCategories))
+            </b>
+        </p>
+
+        <a id="comment"></a>
+
+        <p>
+            @Html.Raw(Model.Entry)
+        </p>
+    </fieldset>
+
+    <p class="text-success" id="feedback">
+        @ViewBag.Success
+    </p>
+
+    <fieldset>
+        <legend>Leave a comment</legend>
+        <!-- Comment form. -->
+        <form method="post" asp-action="EntryComments">
+            <div class="form-group row">
+                <label class="control-label col-sm-2" for="name">Your name: <span class="text-danger">*</span></label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control form" name="name" required />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-2" for="email">Your email:</label>
+                <div class="col-sm-6">
+                    <input type="email" class="form-control form" name="email" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-2" for="website">Website:</label>
+                <div class="col-sm-6">
+                    <input type="url" class="form-control form" name="website" placeholder="https://" onclick="this.placeholder=''" onblur="this.placeholder='https://'" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-2" for="comment">Comment: <span class="text-danger">*</span></label>
+                <div class="col-sm-6">
+                    <textarea class="form-control form" name="comment" required></textarea>
+                </div>
+            </div>
+            <div class="offset-sm-2 col-sm-6">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+        <!-- /Comment form. -->
+    </fieldset>
+
+    <h5>
+        <img src="~/imgs/bootstrap-icons/chat-text-fill.svg" alt="" width="15" height="15" />
+        <b>Latest comments</b>
+    </h5>
+
+    @if (!Model.BsComments.Any())
+    {
+        <em>No comments have been added for this entry yet.</em>
+    }
+    else
+    {
+        <div class="comment-container">
+            @foreach (var comment in Model.BsComments)
+            {
+                <div class="single-comment">
+                    <div class="comment col-sm-8">
+                        <div class="comment-header">
+                            <img src="~/imgs/bootstrap-icons/person-fill.svg" alt="" width="15" height="15" />
+                            @if (!string.IsNullOrEmpty(comment.Email))
+                            {
+                                <a href="mailto:@comment.Email" title="@comment.Email">@comment.Name</a>
+                            }
+                            else
+                            {
+                                @comment.Name
+                            }
+
+                            @*Skip seconds in date time output:*@
+                            <text>(@comment.Date.ToString().Substring(0, 16))</text>
+
+                            @if (!string.IsNullOrEmpty(comment.Website))
+                            {
+                                <img src="~/imgs/bootstrap-icons/link-45deg.svg" alt="" width="15" height="15" />
+                                <text>
+                                    <a href="@comment.Website" target="_blank">@comment.Website</a>
+                                </text>
+                            }
+
+                            @if (TempData["Admin"] != null)
+                            {
+                                <div style="float: right; padding-right: 5px; display: inline-block">
+                                    <img src="~/imgs/bootstrap-icons/reply-fill.svg" width="15" height="15" />
+                                    <a asp-controller="Comment" asp-action="Edit" asp-route-id="@comment.Id">Reply</a>&nbsp;
+                                    <form method="post" style="display: inline-block" asp-controller="Comment" asp-action="Delete" asp-route-id="@comment.Id">
+                                        <button type="submit" class="btn-as-link" title="Delete comment." onclick="return confirm('Are you sure you want to delete this comment?')">
+                                            <img src="~/imgs/bootstrap-icons/trash-fill.svg" width="15" height="15" />
+                                        </button>
+                                    </form>
+                                </div>
+                            }
+                        </div>
+                        <p>
+                            @Html.Raw(comment.Comment.Replace(Environment.NewLine, "<br />"))
+                        </p>
+
+                        @if (!string.IsNullOrEmpty(comment.Reply))
+                        {
+                            <div class="comment-reply">
+                                <em><b>Admin reply:</b> @Html.Raw(comment.Reply.Replace(Environment.NewLine, "<br />"))</em>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            }
+        </div>
+    }
+
+    <p style="margin-top: 30px">
+        <img src="~/imgs/bootstrap-icons/caret-left-fill.svg" alt="" width="12" height="12" />
+        <a href="javascript:history.go(-1)"><b>Go back</b></a>
+    </p>
+</div>

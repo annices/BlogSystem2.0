@@ -1,0 +1,68 @@
+﻿@model BsUser
+
+@{
+    ViewBag.Title = "Edit user";
+}
+
+<div class="container">
+
+    <div class="header">
+        <h4>
+            <img src="~/imgs/bootstrap-icons/person-fill.svg" alt="" width="22" height="22" />
+            <b>Edit user</b>
+        </h4>
+        Edit the admin details in the form fields below.
+    </div>
+
+    <p id="feedback" class="text-success">@ViewBag.Success</p>
+
+    <fieldset>
+        <legend>Edit user details</legend>
+
+        <form method="post" asp-controller="User" asp-action="Edit">
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group row">
+                <label class="control-label col-sm-2" asp-for="Username">Username: <span class="text-danger">*</span></label>
+                <div class="col-sm-7">
+                    <input asp-for="Username" type="text" class="form-control form" required />
+                    <span asp-validation-for="@Model.Username" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-2" asp-for="Firstname">First name:</label>
+                <div class="col-sm-7">
+                    <input asp-for="Firstname" type="text" class="form-control form" />
+                    <span asp-validation-for="@Model.Firstname" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-2" asp-for="Lastname">Last name:</label>
+                <div class="col-sm-7">
+                    <input asp-for="Lastname" type="text" class="form-control form" />
+                    <span asp-validation-for="@Model.Lastname" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-2" asp-for="Email">Email: <span class="text-danger">*</span></label>
+                <div class="col-sm-7">
+                    <input asp-for="Email" type="email" class="form-control form" required />
+                    <span asp-validation-for="@Model.Email" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-2" for="inputPassword">Password:</label>
+                <div class="col-sm-7">
+                    <input type="text" for="inputPassword" name="inputPassword" class="form-control form" />
+                    <small class="form-text text-muted">
+                        Leave the password field empty to keep the current password.
+                    </small>
+                    <span asp-validation-for="@Model.Password" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="offset-sm-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </fieldset>
+
+</div>

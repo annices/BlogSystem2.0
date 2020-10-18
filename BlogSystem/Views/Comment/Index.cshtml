@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Comment edit list";
+}
+
+<div class="container">
+    <div class="header">
+        <h4>
+            <img src="~/imgs/bootstrap-icons/card-list.svg" alt="" width="22" height="22" />
+            <b>Edit comments</b>
+        </h4>
+        Edit, delete and/or search for comments in the table below.
+    </div>
+
+    <div class="text-success" style="margin-bottom: 20px" id="feedback">@ViewBag.Success</div>
+
+    <form method="post" action="Comment/Delete">
+        <img src="../imgs/bootstrap-icons/trash-fill.svg" width="15" height="15" />
+        <button class="btn-as-link" style="margin-bottom: 10px" onclick="return confirm('Are you sure you want to delete selected comments?')">
+            Delete selected
+        </button>
+
+        @Html.AjaxGrid(Url.Action("Index"))
+    </form>
+</div>
