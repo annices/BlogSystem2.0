@@ -33,7 +33,7 @@
 # 2 License
 Released under the MIT license.
 
-MIT: [http://rem.mit-license.org](http://rem.mit-license.org/), see [LICENSE](/LICENSE).
+MIT: [http://rem.mit-license.org](http://rem.mit-license.org/), see [LICENSE](LICENSE).
 
 ---
 
