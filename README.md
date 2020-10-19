@@ -135,16 +135,16 @@ As this script was created in Visual Studio Community with SQL Server, I will go
   * [Install Visual Studio Community](https://visualstudio.microsoft.com/vs/community/)
   
 ## 10.2 Create the database and its tables
-  1. Navigate to the unzipped script folder “BlogSystem2.0”. Open the file “sql_blogsystem.sql”, look up the code section below and change the highlighted values to suit your own settings. (Note! The default password is set to “admin”, but can be changed after your first login):
+  1. Open the file “sql_blogsystem.sql”, look up the code section below and change the commented values to suit your own settings. (Note! The default password is set to “admin”, but can be changed after your first login):
 
 ```sql
 INSERT INTO BlogSystem.dbo.BS_Users 
 VALUES 
   (
-    'YourUserName',
+    'YourUserName', -- Your username.
     'YourFirstName', -- Optional.
     'YourLastName', -- Optional.
-    'your@email.com', 
+    'your@email.com', -- Your user email.
     -- Keep the hashed password below until your first login. Default password is set to
     -- "admin", but can be changed under the admin panel once you're logged in:
    'AQAAAAEAACcQAAAAEBehHmgEHZmjXlTBGlKSW9KVuxMIHp1f4r8sC502SFQkGGxiYeef6HFntNMCMdZ76w=='
@@ -155,7 +155,7 @@ VALUES
 2. Once you have updated the SQL code in “sql_blogsystem.sql”, then open and execute the SQL file/code in SQL Server Management Studio to create the BlogSystem database with its tables.
 
 ## 10.3 Configure the application
-  3. When the database and tables are created, you can open the application in Visual Studio by double clicking the solution file “BlogSystem.sln” under the unzipped project folder path: “BlogSystem2.0 > BlogSystem > BlogSystem.sln”.
+  3. When the database and tables are created, you can open the application in Visual Studio by double clicking the solution file “BlogSystem.sln” under the folder path: “c-sharp-blog-system-2.0 > BlogSystem > BlogSystem.sln”.
 
   4. In Visual Studio, you can then change the commented values below to suit your own settings in the appsettings.json file found in the Solution Explorer window:
   
@@ -187,7 +187,7 @@ VALUES
     * Microsoft.EntityFrameworkCore.Tools (3.1.8)
     * Microsoft.VisualStudio.Web.CodeGeneration.Design (3.1.4)
     * NonFactors.Grid.Mvc6 (6.2.0)
-    * ReflectionIT.Mvc.Pagin (4.0.0)
+    * ReflectionIT.Mvc.Paging (4.0.0)
 
 ## 10.5 Run and test the application
   7. Select to run the application via the Visual Studio play button in the top menu bar.
