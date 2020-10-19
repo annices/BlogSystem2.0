@@ -71,7 +71,7 @@ The following functions and features have been implemented to Blog System 2.0:
 # 6 ER diagram
 The following diagram illustrates the database table relationships reflecting the entity relationships, and the table attributes (columns) reflecting the entity properties used by this script.
 
-<img src="https://diagrams.annice.se/BlogSystem2.0/ERDiagram.png" alt="Sitemap for admin pages." width="700">
+<img src="https://diagrams.annice.se/c-sharp-blog-system-2.0/ERDiagram.png" alt="Sitemap for admin pages." width="700">
 
 ## 6.1 ER rules
   * A blog entry can have many categories, and one category can be linked to many entries.
@@ -83,7 +83,7 @@ The following diagram illustrates the database table relationships reflecting th
 # 7 Sequence diagram
 The diagram below illustrates an example of a high level context flow when an admin user creates a blog post.
 
-<img src="https://diagrams.annice.se/BlogSystem2.0/CreateEntrySequenceDiagram.png" alt="Sequence flow to create an entry." width="750">
+<img src="https://diagrams.annice.se/c-sharp-blog-system-2.0/CreateEntrySequenceDiagram.png" alt="Sequence flow to create an entry." width="750">
 
 ---
 
@@ -91,37 +91,37 @@ The diagram below illustrates an example of a high level context flow when an ad
 In this section you can see an overview of the admin vs. anonymous page hierarchy in the application.
 
 ## 8.1 Sitemap for anonymous users
-<img src="https://diagrams.annice.se/BlogSystem2.0/PublicSitemap.png" alt="Sitemap for public pages." width="400">
+<img src="https://diagrams.annice.se/c-sharp-blog-system-2.0/PublicSitemap.png" alt="Sitemap for public pages." width="400">
 
 ## 8.2 Sitemap for the admin user
-<img src="https://diagrams.annice.se/BlogSystem2.0/AdminSitemap.png" alt="Sitemap for admin pages." width="600">
+<img src="https://diagrams.annice.se/c-sharp-blog-system-2.0/AdminSitemap.png" alt="Sitemap for admin pages." width="600">
 
 ---
 
 # 9 User interface
 Screenshot of the application start page with the latest posted entries:
 
-<img src="https://diagrams.annice.se/BlogSystem2.0/GUI_StartPage.png" alt="" width="650">
+<img src="https://diagrams.annice.se/c-sharp-blog-system-2.0/GUI_StartPage.png" alt="" width="650">
 
 Screenshot of an entry details page displayed for anonymous users:
 
-<img src="https://diagrams.annice.se/BlogSystem2.0/GUI_EntryDetails.png" alt="" width="650">
+<img src="https://diagrams.annice.se/c-sharp-blog-system-2.0/GUI_EntryDetails.png" alt="" width="650">
 
 Screenshot of the comment section on an entry details page:
 
-<img src="https://diagrams.annice.se/BlogSystem2.0/GUI_Comments.png" alt="" width="650">
+<img src="https://diagrams.annice.se/c-sharp-blog-system-2.0/GUI_Comments.png" alt="" width="650">
 
 Screenshot of the admin view to create a new blog entry:
 
-<img src="https://diagrams.annice.se/BlogSystem2.0/GUI_CreateEntry.png" alt="" width="650">
+<img src="https://diagrams.annice.se/c-sharp-blog-system-2.0/GUI_CreateEntry.png" alt="" width="650">
 
 Screenshot of the admin view to edit a blog entry:
 
-<img src="https://diagrams.annice.se/BlogSystem2.0/GUI_EditEntry.png" alt="" width="650">
+<img src="https://diagrams.annice.se/c-sharp-blog-system-2.0/GUI_EditEntry.png" alt="" width="650">
 
 Screenshot of the entry edit list with filter options displayed for the admin:
 
-<img src="https://diagrams.annice.se/BlogSystem2.0/GUI_EditEntryList.png" alt="" width="650">
+<img src="https://diagrams.annice.se/c-sharp-blog-system-2.0/GUI_EditEntryList.png" alt="" width="650">
 
 ---
 
