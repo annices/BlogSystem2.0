@@ -69,19 +69,19 @@ The following functions and features have been implemented to Blog System 2.0:
 ---
   
 # 6 ER diagram
-The following diagram illustrates the database table relationshipsreflecting the entity relationships,and the table attributes (columns)reflecting the entity properties used by this script.
+The following diagram illustrates the database table relationships reflecting the entity relationships, and the table attributes (columns) reflecting the entity properties used by this script.
 
 <img src="https://diagrams.annice.se/BlogSystem2.0/ERDiagram.png" alt="Sitemap for admin pages." width="700">
 
 ## 6.1 ER rules
-  *	A blog entry can have many categories, and one category can be linked to many entries.
+  * A blog entry can have many categories, and one category can be linked to many entries.
   * A blog entry can have many comments, but one comment is linked to one entry.
   * A blog entry can be created and edited by one admin user, but the admin user can create and edit many entries.
   
 ---
 
 # 7 Sequence diagram
-The diagram below illustrates the high level sequence flow when an admin user creates a blog post.
+The diagram below illustrates an example of a high level context flow when an admin user creates a blog post.
 
 <img src="https://diagrams.annice.se/BlogSystem2.0/CreateEntrySequenceDiagram.png" alt="Sequence flow to create an entry." width="750">
 
