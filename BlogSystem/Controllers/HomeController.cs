@@ -49,13 +49,6 @@ namespace BlogSystem.Controllers
             _config = config;
         }
 
-        public IActionResult Index()
-        {
-            ViewBag.Text = "Hello world!";
-
-            return View();
-        }
-
         /// <summary>
         /// Render the public start page of the application.
         /// </summary>
@@ -287,7 +280,7 @@ namespace BlogSystem.Controllers
         }
 
         /// <summary>
-        /// Render the reset password page with user ID fetched from the decoded token.
+        /// Render the reset password page with the token fetched from the URL.
         /// </summary>
         /// <returns></returns>
         [HttpGet]
