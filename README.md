@@ -6,7 +6,7 @@
 2. [License](#2-license)
 3. [System description](#3-system-description)
 4. [System requirements](#4-system-requirements)
-5. [Changes and added features to version 2.0](#5-changes-and-added-features-to-version-20)
+5. [Supported features](#5-supported-features)
    * [5.1 Changes and added features to version 2.0](#51-changes-and-added-features-to-version-20)
 6. [ER diagram](#6-er-diagram)
     * [6.1 ER rules](#61-er-rules)
