@@ -7,6 +7,7 @@
 3. [System description](#3-system-description)
 4. [System requirements](#4-system-requirements)
 5. [Changes and added features to version 2.0](#5-changes-and-added-features-to-version-20)
+   * [5.1 Changes and added features to version 2.0](#51-changes-and-added-features-to-version-20)
 6. [ER diagram](#6-er-diagram)
     * [6.1 ER rules](#61-er-rules)
 7. [Sequence diagram](#7-sequence-diagram)
@@ -47,7 +48,20 @@ The script can be run on servers that support C# 8.0 and ASP.NET Core 3.1 along 
 
 ---
 
-# 5 Changes and added features to version 2.0
+# 5 Supported features
+* Login system based on sessions.
+* User password encryption.
+* Password recovery function.
+* Protection against cross-site request forgery.
+* Full CRUD support for an admin regarding blog entries, categories and comments.
+* WYSIWYG HTML entry editor for blog posts.
+* Admin reply function to blog comments.
+* Responsive design.
+* Client and server side validation.
+* Filter and sort function of blog entries, comments and categories.
+* Pagination for blog entries, comments and categories.
+
+## 5.1 Changes and added features to version 2.0
 The following functions and features have been implemented to Blog System 2.0:
   * Modified database model to support several categories per entry, along with added ability to save blog posts as drafts or published entries.
   * Upgraded frameworks to support cross-platform web development to:
@@ -193,6 +207,8 @@ VALUES
   7. Select to run the application via the Visual Studio play button in the top menu bar.
 
   8. On your first login, use the password "**admin**" along with the user email you specified when you executed the SQL code (see section 10.2).
+
+---
 
 # 11 Contact details
 For general feedback related to this script, such as any discovered bugs etc., you can contact me via the following email address: [info@annice.se](mailto:info@annice.se)
