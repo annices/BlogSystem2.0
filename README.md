@@ -49,6 +49,7 @@ The script can be run on servers that support C# 8.0 and ASP.NET Core 3.1 along 
 ---
 
 # 5 Supported features
+The following functions and features are supported by this script:
 * Login system based on sessions.
 * User password encryption.
 * Password recovery function.
@@ -62,7 +63,6 @@ The script can be run on servers that support C# 8.0 and ASP.NET Core 3.1 along 
 * Pagination for blog entries, comments and categories.
 
 ## 5.1 Changes and added features to version 2.0
-The following functions and features have been implemented to Blog System 2.0:
   * Modified database model to support several categories per entry, along with added ability to save blog posts as drafts or published entries.
   * Upgraded frameworks to support cross-platform web development to:
     * ASP.NET Core 3.1
