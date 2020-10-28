@@ -156,7 +156,7 @@ namespace BlogSystem.Controllers
             try
             {
                 if (id == null || !_db.BsEntries.Where(e => e.Id == id).Any())
-                return RedirectToAction(nameof(Index));
+                    return RedirectToAction(nameof(Index));
 
                 BsEntry item = _db.BsEntries.Find(id);
 
