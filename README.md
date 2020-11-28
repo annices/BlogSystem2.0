@@ -8,6 +8,7 @@
 4. [System requirements](#4-system-requirements)
 5. [Supported features](#5-supported-features)
    * [5.1 Changes and added features to version 2.0](#51-changes-and-added-features-to-version-20)
+   * [5.2 Changes to version 2.2](#52-changes-to-version-22)
 6. [ER diagram](#6-er-diagram)
     * [6.1 ER rules](#61-er-rules)
 7. [Sequence diagram](#7-sequence-diagram)
@@ -79,6 +80,9 @@ The following functions and features are supported by this script:
   * Modified sort, filter and pagination function of entries, comments and categories using Grid MVC 6.2.0.
   * Added pagination to entry comments.
   * Added multi-select option to support multiple delete of entries, comments and categories.
+
+## 5.2 Changes to version 2.2
+  * Added a check to prevent anonymous users to access draft entries in any way.
   
 ---
   
