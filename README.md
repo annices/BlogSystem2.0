@@ -28,7 +28,7 @@
 ---
 
 # 1 General information
-"Blog System 2.0" was created in Visual Studio Community by Annice Strömberg, 2020, with [Annice.se](https://annice.se) as the primary download location. In this script, an admin can create, edit and delete blog entries, entry categories and entry comments. The admin can also reply to comments posted by anonymous users. Furthermore, the admin can edit the admin details. Moreover, the script supports a password recovery function to reset the admin password via a token link sent to the admin email.
+"Blog System 2.2" was created in Visual Studio Community by Annice Strömberg, 2020, with [Annice.se](https://annice.se) as the primary download location. In this script, an admin can create, edit and delete blog entries, entry categories and entry comments. The admin can also reply to comments posted by anonymous users. Furthermore, the admin can edit the admin details. Moreover, the script supports a password recovery function to reset the admin password via a token link sent to the admin email.
 
 ---
 
@@ -40,7 +40,7 @@ MIT: [http://rem.mit-license.org](http://rem.mit-license.org/), see [LICENSE](LI
 ---
 
 # 3 System description
-"Blog System 2.0" is built in the front-end languages: CSS (customized, and with Bootstrap 4.3.1), HTML5, JavaScript (classic, and with Ajax, jQuery3.3.1). Moreover, the back-end code is build in C# 8.0 based on ASP.NET Core 3.1 using the MVC (Model-View-Controller) design pattern. In addition, the database interaction is based on Entity Framework Core 3.1 – database first – using a relational database built in Transact SQL with SQL Server as a DBMS (DataBase Management System).
+"Blog System 2.2" is built in the front-end languages: CSS (customized, and with Bootstrap 4.3.1), HTML5, JavaScript (classic, and with Ajax, jQuery3.3.1). Moreover, the back-end code is build in C# 8.0 based on ASP.NET Core 3.1 using the MVC (Model-View-Controller) design pattern. In addition, the database interaction is based on Entity Framework Core 3.1 – database first – using a relational database built in Transact SQL with SQL Server as a DBMS (DataBase Management System).
 
 ---
 
