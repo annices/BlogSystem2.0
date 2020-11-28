@@ -104,8 +104,14 @@ namespace BlogSystem.Controllers
             // Catch posted feedback:
             ViewBag.Success = TempData["Success"];
 
-            if (id == null || !_db.BsEntries.Where(e => e.Id == id).Any())
+            if (HttpContext.Session.GetString("UserID") == null &&
+                _db.BsEntries.Where(e => e.Id == id && e.IsPublished == false).Any())
+            {
                 return RedirectToAction(nameof(Index));
+            }
+
+            if (id == null || !_db.BsEntries.Where(e => e.Id == id).Any())
+            return RedirectToAction(nameof(Index));
 
             BsEntry entry = _db.BsEntries.Find(id);
 
